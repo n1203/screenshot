@@ -19,10 +19,7 @@ export async function getScreenshot(url, width, height) {
     await page.goto(url);
     await page.setViewport({ width: Number(width) || 1280, height: Number(height) || 720, deviceScaleFactor: 2 });
     // 等待网页加载完成
-    await page.waitForNavigation({
-        waitUntil: "load",
-        timeout: 10000
-    })
+    await page.waitForNavigation()
     const file = await page.screenshot();
     return file;
 }
