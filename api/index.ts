@@ -7,6 +7,7 @@ module.exports = async (req, res) => {
     const file = await getScreenshot(req.query.url, req.query.width, req.query.height);
     res.setHeader("Content-Type", "image/png");
     res.setHeader("Cache-Control", "public, immutable, no-transform, s-maxage=86400, max-age=86400");
+    res.setHeader("Access-Control-Allow-Origin", "*")
     res.status(200).end(file);
   } catch (error) {
     console.error(error)
